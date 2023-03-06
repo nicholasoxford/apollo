@@ -3,7 +3,7 @@ import Document, { Head, Html, Main, NextScript } from "next/document";
 class MyDocument extends Document {
   render() {
     let description = "Mintee is the fastest NFT minting service.";
-    let ogimage = "https://www.roomgpt.io/og-image.png";
+    let ogimage = "https://minte.vercel.app/public/warp.jpeg";
     let sitename = "Mintee";
     let title = "Fastest NFT minting service";
 
