@@ -2,10 +2,10 @@ import Document, { Head, Html, Main, NextScript } from "next/document";
 
 class MyDocument extends Document {
   render() {
-    let description = "Generate your dream room in seconds.";
+    let description = "Mintee is the fastest NFT minting service.";
     let ogimage = "https://www.roomgpt.io/og-image.png";
-    let sitename = "roomGPT.io";
-    let title = "Dream Room Generator";
+    let sitename = "Mintee";
+    let title = "Fastest NFT minting service";
 
     return (
       <Html lang="en">
@@ -21,7 +21,7 @@ class MyDocument extends Document {
           <meta property="og:image" content={ogimage} />
           <meta name="twitter:image" content={ogimage} />
         </Head>
-        <body className="bg-[#17181C] text-white">
+        <body className="bg-[#111C27] text-white">
           <Main />
           <NextScript />
         </body>
