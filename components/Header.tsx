@@ -2,12 +2,8 @@ import { useAuth, UserButton } from "@clerk/nextjs";
 import { getAuth } from "@clerk/nextjs/server";
 import { GetServerSideProps } from "next";
 import Link from "next/link";
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const { userId } = getAuth(ctx.req);
 
-  return { props: { userId } };
-};
-export default function Header(props?: { userId?: string }) {
+export default function Header(props: { userId: string }) {
   return (
     <header className="flex flex-col xs:flex-row justify-between items-center w-full mt-3 border-b pb-7 sm:px-4 px-2 border-gray-500 gap-2">
       <Link href="/" className="flex space-x-2 justify-center items-center">
@@ -17,7 +13,7 @@ export default function Header(props?: { userId?: string }) {
         </h1>
       </Link>
       <div className="flex space-x-2">
-        {!props?.userId ? (
+        {!props.userId ? (
           <>
             <a
               className="flex max-w-fit items-center justify-center  rounded-full border border-blue-600 text-white px-5 py-2 text-sm shadow-md hover:bg-gray-800 font-medium transition"
@@ -51,7 +47,7 @@ export default function Header(props?: { userId?: string }) {
           </>
         )}
         <div className="flex justify-center items-center">
-          {!props?.userId && <UserButton />}
+          {props.userId && <UserButton />}
         </div>
       </div>
     </header>

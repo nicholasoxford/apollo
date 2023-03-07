@@ -21,7 +21,7 @@ export default function Page(props: { userId: string }) {
         <title>Mintee</title>
       </Head>
 
-      <Header />
+      <Header userId={props.userId} />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 sm:mt-10 mt-10 background-gradient">
         <a
           href="/"
