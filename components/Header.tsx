@@ -13,19 +13,39 @@ export default function Header() {
         </h1>
       </Link>
       <div className="flex space-x-2">
-        <a
-          className="flex max-w-fit items-center justify-center  rounded-full border border-blue-600 text-white px-5 py-2 text-sm shadow-md hover:bg-gray-800 font-medium transition"
-          href="/sign-in"
-        >
-          <p>Sign in</p>
-        </a>
-        <a
-          className="flex max-w-fit items-center justify-center  rounded-full border border-blue-600 text-white px-5 py-2 text-sm shadow-md hover:bg-blue-500 bg-blue-600 font-medium transition"
-          href="/sign-up"
-        >
-          <p>Create Account</p>
-          <RightArrow />
-        </a>
+        {!auth.isSignedIn ? (
+          <>
+            <a
+              className="flex max-w-fit items-center justify-center  rounded-full border border-blue-600 text-white px-5 py-2 text-sm shadow-md hover:bg-gray-800 font-medium transition"
+              href="/sign-in"
+            >
+              <p>Sign in</p>
+            </a>
+            <a
+              className="flex max-w-fit items-center justify-center  rounded-full border border-blue-600 text-white px-5 py-2 text-sm shadow-md hover:bg-blue-500 bg-blue-600 font-medium transition"
+              href="/sign-up"
+            >
+              <p>Create Account</p>
+              <RightArrow />
+            </a>
+          </>
+        ) : (
+          <>
+            <a
+              className="flex max-w-fit items-center justify-center  rounded-full border border-blue-600 text-white px-5 py-2 text-sm shadow-md hover:bg-gray-800 font-medium transition"
+              href="/admin"
+            >
+              <p>View Usage</p>
+            </a>
+            <a
+              className="flex max-w-fit items-center justify-center  rounded-full border border-blue-600 text-white px-5 py-2 text-sm shadow-md hover:bg-blue-500 bg-blue-600 font-medium transition"
+              href="/docs"
+            >
+              <p>Upgrade</p>
+              <RightArrow />
+            </a>
+          </>
+        )}
         <div className="flex justify-center items-center">
           {auth.isSignedIn && <UserButton />}
         </div>
