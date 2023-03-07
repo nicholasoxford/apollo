@@ -11,6 +11,11 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <link rel="icon" href="/favicon.ico" />
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/apple-touch-icon.png"
+          />
           <meta name="description" content={description} />
           <meta property="og:site_name" content={sitename} />
           <meta property="og:description" content={description} />

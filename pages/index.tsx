@@ -1,3 +1,4 @@
+import { useAuth } from "@clerk/nextjs";
 import { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
@@ -8,6 +9,8 @@ import SquigglyLines from "../components/SquigglyLines";
 import { Testimonials } from "../components/Testimonials";
 
 const Home: NextPage = () => {
+  const user = useAuth();
+
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Head>
@@ -37,12 +40,14 @@ const Home: NextPage = () => {
           as possible.
         </h2>
         <div className="flex sm:flex-row flex-col  mt-6 justify-center space-x-4">
-          <Link
-            className="bg-blue-500 rounded-xl text-white font-medium w-52 px-4 py-3 sm:mt-10 mt-8 w-54 hover:bg-blue-400 transition"
-            href="/"
-          >
-            Create a free account
-          </Link>
+          {!user.isSignedIn && (
+            <Link
+              className="bg-blue-500 rounded-xl text-white font-medium w-52 px-4 py-3 sm:mt-10 mt-8 w-54 hover:bg-blue-400 transition"
+              href="/"
+            >
+              Create a free account
+            </Link>
+          )}
 
           <Link
             className="bg-gray-500 rounded-xl text-white font-medium px-4 py-3 sm:mt-10 mt-8 w-52  hover:bg-gray-400 transition"
