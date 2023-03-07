@@ -1,5 +1,7 @@
 import { useAuth } from "@clerk/nextjs";
-import { NextPage } from "next";
+import { User } from "@clerk/nextjs/dist/api";
+import { buildClerkProps, clerkClient, getAuth } from "@clerk/nextjs/server";
+import { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,10 +9,12 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import SquigglyLines from "../components/SquigglyLines";
 import { Testimonials } from "../components/Testimonials";
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const { userId } = getAuth(ctx.req);
 
-const Home: NextPage = () => {
-  const user = useAuth();
-
+  return { props: { userId } };
+};
+export default function Page(props: { userId: string }) {
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Head>
@@ -40,7 +44,7 @@ const Home: NextPage = () => {
           as possible.
         </h2>
         <div className="flex sm:flex-row flex-col  mt-6 justify-center space-x-4">
-          {!user.isSignedIn && (
+          {!props.userId && (
             <Link
               className="bg-blue-500 rounded-xl text-white font-medium w-52 px-4 py-3 sm:mt-10 mt-8 w-54 hover:bg-blue-400 transition"
               href="/"
@@ -89,6 +93,4 @@ const Home: NextPage = () => {
       <Footer />
     </div>
   );
-};
-
-export default Home;
+}
