@@ -10,6 +10,14 @@ export async function fetchGetJSON(url: string) {
   }
 }
 
+export const checkEnvironment = () => {
+  let base_url =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : "https://mintee.vercel.com"; // https://v2ds.netlify.app
+
+  return base_url;
+};
 export async function fetchPostJSON(url: string, data?: {}) {
   try {
     // Default options are marked with *

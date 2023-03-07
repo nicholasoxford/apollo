@@ -1,10 +1,13 @@
 import { getAuth } from "@clerk/nextjs/server";
 import { GetServerSideProps } from "next";
+import { checkEnvironment } from "../../utils/api-helpers";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { userId } = getAuth(ctx.req);
   console.log(userId);
-  const res = await fetch("http://localhost:3000/api/onboard");
+  const url = checkEnvironment() + "/api/onboard";
+  console.log(url);
+  const res = await fetch(url);
   console.log(res);
   return { props: { userId } };
 };
